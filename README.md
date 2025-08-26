@@ -22,80 +22,103 @@
 
 ## 🎯 Key Features
 
-### 🧠 **AI-Powered Decision Making**
-- Uses OpenRouter API with multiple AI models (Mistral, Llama, etc.)
-- Analyzes market conditions, portfolio balance, and price trends
-- Makes intelligent buy/sell decisions with reasoning
-- Automatic fallback to mathematical rules if AI fails
+<table>
+<tr>
+<td width="50%">
 
-### 💾 **Smart Memory System**
-- Fetches your trading history on startup
-- Calculates precise cost basis using FIFO accounting
-- **Never sells at a loss** - protects your capital
-- Remembers your cost basis between restarts
+### 🧠 **AI-Powered Trading**
+- Multiple AI models with fallback
+- Market analysis and trend detection  
+- Intelligent buy/sell timing
+- Reasoning-based decisions
 
-### 🛡️ **Built-in Safety Features**
-- Hard-coded safety rules that AI cannot override
-- Never sells below cost basis + minimum profit ($50)
-- Position limits (max 80% in one asset)
-- Minimum order size enforcement
-- Balance mismatch detection and correction
+</td>
+<td width="50%">
 
-### 📱 **Telegram Integration**
-- Real-time notifications for all trading activities
-- Order placement and fill confirmations
-- Portfolio updates and profit tracking
-- Error alerts and bot status updates
+### 💾 **Smart Memory**
+- Fetches complete trading history
+- FIFO cost basis calculation
+- **Never sells at a loss**
+- Persistent state management
 
-### ⚡ **Dynamic Trading Logic**
-- Tracks price high/low water marks for optimal entry/exit
-- Portfolio rebalancing when heavily weighted
-- Market trend analysis and volatility adjustment
-- 5-minute price monitoring cycle
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 🛡️ **Safety First**
+- Hard-coded protection rules
+- Position size limits (80% max)
+- Balance verification
+- Multiple safety layers
+
+</td>
+<td width="50%">
+
+### 📱 **Real-time Monitoring**
+- Telegram notifications
+- Order fill alerts
+- Portfolio updates
+- Error notifications
+
+</td>
+</tr>
+</table>
 
 ## 🚀 Quick Start
 
-### 1. Prerequisites
+### 📦 Installation
 ```bash
-npm install ethers node-fetch dotenv
+# Clone the repository
+git clone https://github.com/Saga-Labs/ai-trading-bot.git
+cd ai-trading-bot
+
+# Install dependencies
+npm install
 ```
 
-### 2. Environment Setup
+### ⚙️ Environment Setup
 Create a `.env` file:
 ```env
-# Required
-PRIVATE_KEY=your_wallet_private_key
+# 🔑 Required Keys
+PRIVATE_KEY=your_wallet_private_key_here
 BASE_RPC_URL=https://mainnet.base.org
-OPENROUTER_API_KEY=sk-or-v1-your_openrouter_key
+OPENROUTER_API_KEY=sk-or-v1-your_openrouter_key_here
 
-# Optional (for notifications)
+# 📱 Optional (Telegram Notifications)
 TELEGRAM_BOT_TOKEN=your_telegram_bot_token
 TELEGRAM_CHAT_ID=your_telegram_chat_id
 
-# Optional (custom AI models)
+# 🤖 Optional (Custom AI Models)
 AI_MODELS=mistralai/mistral-7b-instruct,meta-llama/llama-3.1-8b-instruct
 ```
 
-### 3. Run the Bot
+### 🎬 Launch
 ```bash
-node AITradingBot.js
+npm start
 ```
 
 ## 🤖 AI Models
 
-### Default Models (Free)
-- `mistralai/mistral-7b-instruct` - Primary model
-- `meta-llama/llama-3.1-8b-instruct` - Backup
-- `microsoft/DialoGPT-medium` - Fallback
+<div align="center">
 
-### Recommended Premium Models
-```env
-# Best performance
-AI_MODELS=anthropic/claude-3-haiku,openai/gpt-4o-mini,mistralai/mistral-7b-instruct
+### 🆓 Default Models (FREE)
 
-# Top tier (expensive)
-AI_MODELS=anthropic/claude-3-sonnet,openai/gpt-4o,anthropic/claude-3-haiku
-```
+| Model | Speed | Quality | Cost |
+|-------|-------|---------|------|
+| 🔥 Mistral 7B | Fast | Good | FREE |
+| 🦙 Llama 3.1 8B | Medium | Better | FREE |
+| 💬 DialoGPT | Fast | Basic | FREE |
+
+### 💎 Premium Options
+
+| Model | Speed | Quality | Cost |
+|-------|-------|---------|------|
+| 🎭 Claude 3 Haiku | Very Fast | Excellent | Low |
+| 🧠 GPT-4o Mini | Fast | Excellent | Medium |
+| 👑 Claude 3 Sonnet | Medium | Outstanding | High |
+
+</div>
 
 ## 🏗️ Architecture
 
@@ -106,45 +129,54 @@ AI_MODELS=anthropic/claude-3-sonnet,openai/gpt-4o,anthropic/claude-3-haiku
 
 ## 📊 How It Works
 
-### Startup Process
+### 🔄 Trading Cycle (Every 5 Minutes)
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Price Check   │───▶│  Fill Detection │───▶│ Portfolio State │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+         │                       │                       │
+         ▼                       ▼                       ▼
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│  AI Analysis    │◀───┤ Safety Filters  │◀───┤ Order Execution │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
+### 📊 Decision Matrix
+
+| Condition | AI Recommendation | Safety Check | Action |
+|-----------|-------------------|--------------|--------|
+| Price > Cost Basis + $50 | SELL | ✅ Pass | Place Sell Order |
+| Price < Cost Basis | SELL | ❌ Block | WAIT for Recovery |
+| Portfolio 80%+ ETH | SELL | ✅ Pass | Rebalance Sell |
+| Good Dip Opportunity | BUY | ✅ Pass | Place Buy Order |
+
+### 🚀 Startup Process
 1. **History Analysis**: Fetches your last 50 CoW trades
 2. **Cost Basis**: Calculates average purchase price using FIFO
 3. **Balance Check**: Compares calculated vs actual wallet balance
 4. **AI Initialization**: Tests AI models and sets up decision system
 
-### Trading Cycle (Every 5 Minutes)
-1. **Price Update**: Fetches current ETH price from multiple sources
-2. **Fill Detection**: Checks for newly filled orders
-3. **Portfolio Analysis**: Gets current WETH/USDC balances
-4. **AI Decision**: Sends context to AI for trading recommendation
-5. **Safety Filter**: Applies hard-coded safety rules
-6. **Execution**: Places orders or waits based on filtered decision
-
-### Decision Logic
-- **SELL**: Only when price > cost basis + profit margin
-- **BUY**: When portfolio heavily USDC weighted or good dip opportunity  
-- **WAIT**: When conditions not favorable or AI recommends patience
-- **CANCEL**: Removes stale or poorly positioned orders
-
 ## 🛡️ Safety Mechanisms
 
-### Never Sell at Loss
+<div align="center">
+
+### 🔒 Never Sell at Loss Protection
 ```javascript
-// Hard-coded rule - AI cannot override
+// 🚫 Hard-coded rule - AI cannot override
 if (sellPrice < costBasis + MIN_PROFIT_MARGIN) {
-  return "WAIT" // Refuse to sell
+  return "WAIT" // 🛑 Refuse to sell
 }
 ```
 
-### Position Limits
-- Maximum 80% in either WETH or USDC
-- Minimum order size: $100
-- Balance mismatch detection and correction
+</div>
 
-### AI Fallback
-- If all AI models fail → uses mathematical rules
-- Multiple model redundancy prevents single points of failure
-- Confidence scoring for AI recommendations
+| Safety Layer | Description | Override |
+|--------------|-------------|----------|
+| 🔴 Loss Prevention | Never sell below cost basis + $50 | ❌ No |
+| ⚖️ Position Limits | Max 80% in one asset | ❌ No |
+| 💰 Min Order Size | $100 minimum trades | ❌ No |
+| 🔍 Balance Verification | Checks actual vs calculated | ❌ No |
+| 🤖 AI Fallback | Mathematical rules if AI fails | ❌ No |
 
 ## 📱 Telegram Integration
 
@@ -153,31 +185,72 @@ if (sellPrice < costBasis + MIN_PROFIT_MARGIN) {
   <p><em>Real-time trading notifications delivered to your Telegram</em></p>
 </div>
 
-The bot automatically sends notifications for:
-- ✅ **Order Filled**: "BUY FILLED: 0.125 ETH at $4650 (profit: $150)"
-- 🎯 **Order Placed**: "SELL Order Placed: 0.1 ETH at $4900"  
-- 📊 **Bot Status**: Portfolio updates and cost basis changes
-- ⚠️ **Alerts**: Errors, safety triggers, balance mismatches
+| Event Type | Notification Example |
+|------------|---------------------|
+| ✅ Order Filled | `BUY FILLED: 0.125 ETH at $4650 (profit: $150)` |
+| 🎯 Order Placed | `SELL Order Placed: 0.1 ETH → $490 at $4900` |
+| 📊 Status Update | `Portfolio: 65% ETH, Cost Basis: $4753` |
+| ⚠️ Safety Alert | `Blocked sell: Price below cost basis` |
+| 🤖 AI Decision | `AI Recommendation: WAIT (confidence: 85%)` |
 
 ## 📈 Example Scenarios
 
-### Scenario 1: Profitable Market
-- Cost basis: $4,500, Current price: $4,700
-- AI Decision: SELL (price above cost basis + profit)
-- Safety check: ✅ Approved  
-- Action: Place sell order at $4,750
+<details>
+<summary><b>🟢 Profitable Market Scenario</b></summary>
 
-### Scenario 2: Underwater Position  
-- Cost basis: $4,800, Current price: $4,600
-- AI Decision: SELL (rebalance heavy ETH position)
-- Safety check: ❌ Blocked (below cost basis)
-- Action: WAIT for price recovery
+📊 **Situation:**
+- Cost Basis: $4,500
+- Current Price: $4,700  
+- Portfolio: 70% ETH, 30% USDC
 
-### Scenario 3: Good Buy Opportunity
-- Portfolio: 20% ETH, 80% USDC, Price dipped to $4,400
-- AI Decision: BUY (good entry point)
-- Safety check: ✅ Approved
-- Action: Place buy order at $4,350
+🤖 **AI Analysis:**
+"Price above cost basis with good profit margin. Portfolio slightly ETH-heavy. Recommend partial sell."
+
+🛡️ **Safety Check:** ✅ PASS
+- ✓ Price > cost basis + $50
+- ✓ Portfolio within limits
+
+🎯 **Action:** Place SELL order at $4,750
+
+</details>
+
+<details>
+<summary><b>🔴 Underwater Position Scenario</b></summary>
+
+📊 **Situation:**
+- Cost Basis: $4,800
+- Current Price: $4,600
+- Portfolio: 85% ETH, 15% USDC
+
+🤖 **AI Analysis:**
+"Portfolio heavily ETH-weighted. Recommend rebalancing with partial sell despite current price."
+
+🛡️ **Safety Check:** ❌ BLOCKED
+- ✗ Price below cost basis
+- ✓ Position limits exceeded
+
+🎯 **Action:** WAIT for price recovery above $4,850
+
+</details>
+
+<details>
+<summary><b>🟡 Buy Opportunity Scenario</b></summary>
+
+📊 **Situation:**
+- Cost Basis: $4,600
+- Current Price: $4,400 (dipped)
+- Portfolio: 25% ETH, 75% USDC
+
+🤖 **AI Analysis:**
+"Good dip opportunity with USDC-heavy portfolio. Price shows support at $4,380. Recommend buy."
+
+🛡️ **Safety Check:** ✅ PASS
+- ✓ Portfolio allows more ETH
+- ✓ Order size adequate
+
+🎯 **Action:** Place BUY order at $4,350
+
+</details>
 
 ## 🔧 Configuration
 
