@@ -122,11 +122,6 @@ npm start
 
 ## 🏗️ Architecture
 
-<div align="center">
-  <img src="assets/architecture-diagram.png" alt="Trading Bot Architecture" width="800"/>
-  <p><em>Complete system architecture showing AI decision flow and safety mechanisms</em></p>
-</div>
-
 ## 📊 How It Works
 
 ### 🔄 Trading Cycle (Every 5 Minutes)
