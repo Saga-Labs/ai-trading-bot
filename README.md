@@ -1,7 +1,14 @@
 <div align="center">
-  <img src="assets/logo-banner.png" alt="AI-Enhanced CoW Trading Bot" width="800"/>
   
   # AI-Enhanced CoW Trading Bot
+  
+  <div align="center">
+    <img src="https://github.com/base/brand-kit/blob/main/logo/Logotype/Digital/Base_lockup_2color.png?raw=true" alt="Base" height="60"/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="https://cow.fi/images/cow-swap-logo.svg" alt="CoW Protocol" height="60"/>
+  </div>
+  
+  <br/>
   
   **An intelligent cryptocurrency trading bot that uses AI to make trading decisions on CoW Protocol (Base network)**
   
@@ -100,25 +107,14 @@ npm start
 
 ## 🤖 AI Models
 
-<div align="center">
+The bot uses OpenRouter API to access various AI models for trading decisions:
 
-### 🆓 Default Models (FREE)
+| Model | Provider | Speed | Quality |
+|-------|----------|-------|---------|
+| 🔥 Mistral 7B Instruct | Mistral AI | Fast | Good |
+| 🦙 Llama 3.1 8B Instruct | Meta | Medium | Better |
 
-| Model | Speed | Quality | Cost |
-|-------|-------|---------|------|
-| 🔥 Mistral 7B | Fast | Good | FREE |
-| 🦙 Llama 3.1 8B | Medium | Better | FREE |
-| 💬 DialoGPT | Fast | Basic | FREE |
-
-### 💎 Premium Options
-
-| Model | Speed | Quality | Cost |
-|-------|-------|---------|------|
-| 🎭 Claude 3 Haiku | Very Fast | Excellent | Low |
-| 🧠 GPT-4o Mini | Fast | Excellent | Medium |
-| 👑 Claude 3 Sonnet | Medium | Outstanding | High |
-
-</div>
+*Configure custom models via the `AI_MODELS` environment variable*
 
 ## 🏗️ Architecture
 
@@ -188,64 +184,21 @@ if (sellPrice < costBasis + MIN_PROFIT_MARGIN) {
 | ⚠️ Safety Alert | `Blocked sell: Price below cost basis` |
 | 🤖 AI Decision | `AI Recommendation: WAIT (confidence: 85%)` |
 
-## 📈 Example Scenarios
+## 📈 How Trading Decisions Work
 
-<details>
-<summary><b>🟢 Profitable Market Scenario</b></summary>
+The bot follows a simple but effective decision process:
 
-📊 **Situation:**
-- Cost Basis: $4,500
-- Current Price: $4,700  
-- Portfolio: 70% ETH, 30% USDC
+1. **Fetch current ETH price** from multiple sources
+2. **Calculate portfolio balance** (ETH vs USDC percentage)  
+3. **Check cost basis** from your trading history
+4. **AI analyzes** market conditions and portfolio state
+5. **Safety filters** prevent unprofitable trades
+6. **Execute orders** on CoW Protocol if conditions are met
 
-🤖 **AI Analysis:**
-"Price above cost basis with good profit margin. Portfolio slightly ETH-heavy. Recommend partial sell."
-
-🛡️ **Safety Check:** ✅ PASS
-- ✓ Price > cost basis + $50
-- ✓ Portfolio within limits
-
-🎯 **Action:** Place SELL order at $4,750
-
-</details>
-
-<details>
-<summary><b>🔴 Underwater Position Scenario</b></summary>
-
-📊 **Situation:**
-- Cost Basis: $4,800
-- Current Price: $4,600
-- Portfolio: 85% ETH, 15% USDC
-
-🤖 **AI Analysis:**
-"Portfolio heavily ETH-weighted. Recommend rebalancing with partial sell despite current price."
-
-🛡️ **Safety Check:** ❌ BLOCKED
-- ✗ Price below cost basis
-- ✓ Position limits exceeded
-
-🎯 **Action:** WAIT for price recovery above $4,850
-
-</details>
-
-<details>
-<summary><b>🟡 Buy Opportunity Scenario</b></summary>
-
-📊 **Situation:**
-- Cost Basis: $4,600
-- Current Price: $4,400 (dipped)
-- Portfolio: 25% ETH, 75% USDC
-
-🤖 **AI Analysis:**
-"Good dip opportunity with USDC-heavy portfolio. Price shows support at $4,380. Recommend buy."
-
-🛡️ **Safety Check:** ✅ PASS
-- ✓ Portfolio allows more ETH
-- ✓ Order size adequate
-
-🎯 **Action:** Place BUY order at $4,350
-
-</details>
+**Key Rules:**
+- ✅ Only sell if price > cost basis + $50 minimum profit
+- ✅ Maintain balanced portfolio (max 80% in one asset)
+- ✅ Minimum $100 order sizes to avoid dust trades
 
 ## 🔧 Configuration
 
