@@ -2,12 +2,12 @@
   "name": "ai-enhanced-trading-bot",
   "version": "3.0.0",
   "description": "AI-Enhanced ETH Trading Bot using CoW Protocol with OpenRouter AI",
-  "main": "AIEnhancedTradingBot.js",
+  "main": "AITradingBot.js",
   "type": "module",
   "scripts": {
-    "start": "node AIEnhancedTradingBot.js",
-    "bot": "node AIEnhancedTradingBot.js",
-    "test": "node -c AIEnhancedTradingBot.js"
+    "start": "node AITradingBot.js",
+    "bot": "node AITradingBot.js",
+    "test": "node -c AITradingBot.js"
   },
   "keywords": [
     "crypto",
