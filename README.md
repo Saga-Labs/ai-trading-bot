@@ -1,6 +1,24 @@
-# AI-Enhanced CoW Trading Bot
+<div align="center">
+  <img src="assets/logo-banner.png" alt="AI-Enhanced CoW Trading Bot" width="800"/>
+  
+  # AI-Enhanced CoW Trading Bot
+  
+  **An intelligent cryptocurrency trading bot that uses AI to make trading decisions on CoW Protocol (Base network)**
+  
+  [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+  [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
+  [![Base Network](https://img.shields.io/badge/Network-Base-blue.svg)](https://base.org/)
+  
+  *Automatically trades WETH/USDC pairs while protecting your capital with built-in safety mechanisms*
+  
+</div>
 
-An intelligent cryptocurrency trading bot that uses AI to make trading decisions on CoW Protocol (Base network). The bot automatically trades WETH/USDC pairs while protecting your capital with built-in safety mechanisms.
+## 📸 Bot in Action
+
+<div align="center">
+  <img src="assets/bot-running-screenshot.png" alt="Bot Running Screenshot" width="700"/>
+  <p><em>Live trading bot monitoring ETH markets and making AI-powered decisions</em></p>
+</div>
 
 ## 🎯 Key Features
 
@@ -79,6 +97,13 @@ AI_MODELS=anthropic/claude-3-haiku,openai/gpt-4o-mini,mistralai/mistral-7b-instr
 AI_MODELS=anthropic/claude-3-sonnet,openai/gpt-4o,anthropic/claude-3-haiku
 ```
 
+## 🏗️ Architecture
+
+<div align="center">
+  <img src="assets/architecture-diagram.png" alt="Trading Bot Architecture" width="800"/>
+  <p><em>Complete system architecture showing AI decision flow and safety mechanisms</em></p>
+</div>
+
 ## 📊 How It Works
 
 ### Startup Process
@@ -121,7 +146,12 @@ if (sellPrice < costBasis + MIN_PROFIT_MARGIN) {
 - Multiple model redundancy prevents single points of failure
 - Confidence scoring for AI recommendations
 
-## 📱 Telegram Commands
+## 📱 Telegram Integration
+
+<div align="center">
+  <img src="assets/telegram-notifications.png" alt="Telegram Notifications" width="600"/>
+  <p><em>Real-time trading notifications delivered to your Telegram</em></p>
+</div>
 
 The bot automatically sends notifications for:
 - ✅ **Order Filled**: "BUY FILLED: 0.125 ETH at $4650 (profit: $150)"
