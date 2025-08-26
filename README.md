@@ -3,9 +3,9 @@
   # AI-Enhanced CoW Trading Bot
   
   <div align="center">
-    <img src="https://github.com/base/brand-kit/blob/main/logo/Logotype/Digital/Base_lockup_2color.png?raw=true" alt="Base" height="60"/>
+    <img src="assets/baselogo.png" alt="Base" height="60"/>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <img src="https://cow.fi/images/cow-swap-logo.svg" alt="CoW Protocol" height="60"/>
+    <img src="assets/cowlogo.png" alt="CoW Protocol" height="60"/>
   </div>
   
   <br/>
