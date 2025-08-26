@@ -1,0 +1,30 @@
+{
+  "name": "ai-enhanced-trading-bot",
+  "version": "3.0.0",
+  "description": "AI-Enhanced ETH Trading Bot using CoW Protocol with OpenRouter AI",
+  "main": "AIEnhancedTradingBot.js",
+  "type": "module",
+  "scripts": {
+    "start": "node AIEnhancedTradingBot.js",
+    "bot": "node AIEnhancedTradingBot.js",
+    "test": "node -c AIEnhancedTradingBot.js"
+  },
+  "keywords": [
+    "crypto",
+    "trading",
+    "bot",
+    "ethereum",
+    "cow-protocol",
+    "ai",
+    "openrouter",
+    "llm"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "ethers": "^6.0.0",
+    "node-fetch": "^3.0.0",
+    "node-telegram-bot-api": "^0.66.0"
+  }
+}
