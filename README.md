@@ -60,7 +60,7 @@ AI_MODELS=mistralai/mistral-7b-instruct,meta-llama/llama-3.1-8b-instruct
 
 ### 3. Run the Bot
 ```bash
-node ai-enhanced-cow-trading-bot.js
+node AITradingBot.js
 ```
 
 ## 🤖 AI Models
