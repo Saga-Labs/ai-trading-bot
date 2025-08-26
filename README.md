@@ -6,6 +6,8 @@
     <img src="assets/baselogo.png" alt="Base" height="60"/>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <img src="assets/cowlogo.png" alt="CoW Protocol" height="60"/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="assets/ethereumlogo.png" alt="Ethereum" height="60"/>
   </div>
   
   <br/>
