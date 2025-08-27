@@ -46,6 +46,7 @@
 
 ### 💾 **Smart Memory**
 - Fetches complete trading history
+- **Active order tracking & management**
 - FIFO cost basis calculation
 - **Never sells at a loss**
 - Persistent state management
@@ -66,6 +67,7 @@
 
 ### 📱 **Real-time Monitoring**
 - Telegram notifications
+- **AI-powered Telegram replies**
 - Order fill alerts
 - Portfolio updates
 - Error notifications
@@ -178,6 +180,35 @@ if (sellPrice < costBasis + MIN_PROFIT_MARGIN) {
   <p><em>Real-time trading notifications delivered to your Telegram</em></p>
 </div>
 
+### 🤖 NEW: AI Telegram Replies & Commands!
+The bot now features **interactive AI responses** and comprehensive command system directly in Telegram! Get intelligent answers about your portfolio, market conditions, and trading decisions.
+
+<div align="center">
+  <img src="assets/telegram-notification2.png" alt="AI Telegram Replies" width="600"/>
+  <p><em>AI-powered responses and analysis directly in your Telegram chat</em></p>
+</div>
+
+#### 📋 Available Telegram Commands
+
+| Command | Description |
+|---------|-------------|
+| `/start` | Welcome message and current status |
+| `/status` | Portfolio overview, cost basis, active orders, AI reasoning |
+| `/orders` | Last 10 filled trades with profit/loss analysis |
+| `/active` | All current open orders with distance from market price |
+| `/history` | Extended trading history and stats (50 orders) |
+| `/force` | Manually trigger AI analysis cycle |
+| `/help` | Complete command reference |
+
+#### 💬 Conversational AI
+Just type regular messages (no slash commands) to chat with the AI about:
+- 📈 Market analysis and strategy recommendations
+- 💼 Portfolio optimization suggestions  
+- 📊 Trade explanations and reasoning
+- ⚠️ Risk assessments and safety advice
+
+The conversational AI knows your **exact portfolio**, cost basis, active orders, and recent trading activity for personalized insights!
+
 | Event Type | Notification Example |
 |------------|---------------------|
 | ✅ Order Filled | `BUY FILLED: 0.125 ETH at $4650 (profit: $150)` |
@@ -185,6 +216,31 @@ if (sellPrice < costBasis + MIN_PROFIT_MARGIN) {
 | 📊 Status Update | `Portfolio: 65% ETH, Cost Basis: $4753` |
 | ⚠️ Safety Alert | `Blocked sell: Price below cost basis` |
 | 🤖 AI Decision | `AI Recommendation: WAIT (confidence: 85%)` |
+| 💬 **AI Replies** | `Market analysis: ETH showing bullish momentum...` |
+
+## 🎯 Active Order Management
+
+The bot intelligently tracks and manages your open orders:
+
+### 📊 Order Tracking Features
+- **Real-time monitoring** of all active WETH/USDC orders
+- **Automatic cancellation** of stale orders too far from market
+- **Duplicate prevention** - won't place orders when one exists
+- **AI awareness** - includes active orders in decision context
+
+### 🔄 Order Lifecycle
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Order Placed  │───▶│  Market Monitor │───▶│ Stale Detection │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+         │                       │                       │
+         ▼                       ▼                       ▼
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Order Filled  │◀───┤ Price Tracking  │◀───┤ Auto Cancellation│
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
+**Example**: `SELL at $4850.00 (231 from market)` → Auto-cancelled as too far from current price
 
 ## 📈 How Trading Decisions Work
 

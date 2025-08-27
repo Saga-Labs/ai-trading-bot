@@ -1,0 +1,95 @@
+{
+  "costBasis": 389.12988472216955,
+  "ethHoldings": 0.8209781631860341,
+  "totalCost": 319.467138,
+  "priceHistory": [
+    {
+      "price": 4624.78,
+      "timestamp": 1756307355995,
+      "source": "CoinGecko"
+    }
+  ],
+  "priceHighWaterMark": 4624.78,
+  "priceLowWaterMark": 4624.78,
+  "lastFilledOrder": {
+    "orderId": "0x70f4e14c0a2f43f135939a51cdcb644be35aed53044be6f5aef0169c234a6e2366e55d0bf37cf5335d5aa84abfeb201f8ab0b13068ad71b3",
+    "type": "BUY",
+    "ethAmount": 0.070192,
+    "usdcAmount": 319.467138,
+    "executionPrice": 4551.332602005926,
+    "timestamp": 1756110903719,
+    "creationDate": "2025-08-25T08:35:03.719891Z",
+    "status": "fulfilled"
+  },
+  "recentFilledOrders": [
+    {
+      "orderId": "0x70f4e14c0a2f43f135939a51cdcb644be35aed53044be6f5aef0169c234a6e2366e55d0bf37cf5335d5aa84abfeb201f8ab0b13068ad71b3",
+      "type": "BUY",
+      "ethAmount": 0.070192,
+      "usdcAmount": 319.467138,
+      "executionPrice": 4551.332602005926,
+      "timestamp": 1756110903719,
+      "creationDate": "2025-08-25T08:35:03.719891Z",
+      "status": "fulfilled"
+    },
+    {
+      "orderId": "0xda3df82c9e35c3c29765c52c2361a62a3796c31c8167f8d05171c5235b482bcc66e55d0bf37cf5335d5aa84abfeb201f8ab0b13068ac8cc2",
+      "type": "BUY",
+      "ethAmount": 0.668906,
+      "usdcAmount": 3193.964378,
+      "executionPrice": 4774.9076521962725,
+      "timestamp": 1756052293099,
+      "creationDate": "2025-08-24T16:18:13.099323Z",
+      "status": "fulfilled"
+    },
+    {
+      "orderId": "0x886afa779428a072c18c47abfee984329538a685460af29b5289b8d40028625b66e55d0bf37cf5335d5aa84abfeb201f8ab0b13068ac7335",
+      "type": "SELL",
+      "ethAmount": 0.7362,
+      "usdcAmount": 3549.204698,
+      "executionPrice": 4820.97894322195,
+      "timestamp": 1756045750732,
+      "creationDate": "2025-08-24T14:29:10.732914Z",
+      "status": "fulfilled"
+    },
+    {
+      "orderId": "0xd10187bfc2d41dfe0d1297e279ad9c5bddf7f3f3e06f5728696fa0982948d47166e55d0bf37cf5335d5aa84abfeb201f8ab0b13068a3775d",
+      "type": "BUY",
+      "ethAmount": 0.11107175492175665,
+      "usdcAmount": 485.797081,
+      "executionPrice": 4373.722926609152,
+      "timestamp": 1755456993651,
+      "creationDate": "2025-08-17T18:56:33.651125Z",
+      "status": "fulfilled"
+    }
+  ],
+  "reportingState": {
+    "lastFullReport": 1756307359875,
+    "lastAIDecision": {
+      "action": "WAIT",
+      "reasoning": "The current ETH price of $4624.78 is above the cost basis of $389.13, but it is not yet at the minimum profitable sell price of $439.13. Additionally, the portfolio is currently at 99.1% in ETH, which exceeds the maximum allowed of 80%. Therefore, it is recommended to wait for a more favorable price or sell a smaller amount to reduce portfolio concentration.",
+      "confidence": 0.8,
+      "parameters": {
+        "price": 439.13,
+        "amount": 0.070192,
+        "expectedFillTime": "1-2 hours"
+      },
+      "marketAnalysis": {
+        "trend": "UP",
+        "volatility": "MEDIUM",
+        "support": 439.13,
+        "resistance": 4624.78
+      }
+    },
+    "lastAIReasoning": "The current ETH price of $4624.78 is above the cost basis of $389.13, but it is not yet at the minimum profitable sell price of $439.13. Additionally, the portfolio is currently at 99.1% in ETH, which exceeds the maximum allowed of 80%. Therefore, it is recommended to wait for a more favorable price or sell a smaller amount to reduce portfolio concentration.",
+    "aiDecisionChanges": [],
+    "priceAlerts": {
+      "lastBreakoutAlert": 0,
+      "lastDropAlert": 0,
+      "significantMoveThreshold": 0.05
+    },
+    "hourlyReportInterval": 3600000,
+    "cyclesSinceLastReport": 0
+  },
+  "lastUpdated": "2025-08-27T15:10:47.966Z"
+}
