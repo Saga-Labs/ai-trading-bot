@@ -48,7 +48,7 @@
 - Fetches complete trading history
 - **Active order tracking & management**
 - FIFO cost basis calculation
-- **Never sells at a loss**
+- **Designed to prevent selling at a loss**
 - Persistent state management
 
 </td>
@@ -89,6 +89,12 @@ npm install
 ```
 
 ### ⚙️ Environment Setup
+
+⚠️ **SECURITY WARNING**: 
+- Never commit your `.env` file to version control
+- Add `.env` to your `.gitignore` file immediately
+- Keep your private keys secure and never share them
+
 Create a `.env` file:
 ```env
 # 🔑 Required Keys
@@ -103,6 +109,18 @@ TELEGRAM_CHAT_ID=your_telegram_chat_id
 # 🤖 Optional (Custom AI Models)
 AI_MODELS=mistralai/mistral-7b-instruct,meta-llama/llama-3.1-8b-instruct
 ```
+
+### 📱 Telegram Bot Setup
+1. **Create Bot**: Message [@BotFather](https://t.me/BotFather) on Telegram
+2. **Use Command**: Send `/newbot` and follow instructions
+3. **Get Token**: Copy the bot token to `TELEGRAM_BOT_TOKEN`
+4. **Get Chat ID**: Message [@userinfobot](https://t.me/userinfobot) to get your chat ID
+5. **Test**: Send `/start` to your bot to verify connection
+
+### 💰 Funding Requirements
+- **Minimum**: At least $500 USDC + $500 in WETH to start
+- **Gas Fees**: Keep extra WETH for transaction fees
+- **Testing**: Start with small amounts you can afford to lose completely
 
 ### 🎬 Launch
 ```bash
@@ -167,7 +185,7 @@ if (sellPrice < costBasis + MIN_PROFIT_MARGIN) {
 
 | Safety Layer | Description | Override |
 |--------------|-------------|----------|
-| 🔴 Loss Prevention | Never sell below cost basis + $50 | ❌ No |
+| 🔴 Loss Prevention | Designed to prevent selling below cost basis + $50 | ❌ No |
 | ⚖️ Position Limits | Max 80% in one asset | ❌ No |
 | 💰 Min Order Size | $100 minimum trades | ❌ No |
 | 🔍 Balance Verification | Checks actual vs calculated | ❌ No |
@@ -254,9 +272,45 @@ The bot follows a simple but effective decision process:
 6. **Execute orders** on CoW Protocol if conditions are met
 
 **Key Rules:**
-- ✅ Only sell if price > cost basis + $50 minimum profit
+- ✅ Designed to only sell if price > cost basis + $50 minimum profit
 - ✅ Maintain balanced portfolio (max 80% in one asset)
 - ✅ Minimum $100 order sizes to avoid dust trades
+
+## ✅ Is It Working? - Health Check
+
+Verify your bot is running correctly:
+
+- [ ] Console shows price updates every 5 minutes
+- [ ] Telegram notifications arrive successfully  
+- [ ] Bot responds to `/status` command
+- [ ] No error messages in logs
+- [ ] Orders appear in CoW Protocol interface
+
+## 📊 Performance Expectations
+
+**Realistic Trading Behavior:**
+- **Frequency**: Bot may wait days between trades for optimal conditions
+- **Execution**: CoW Protocol uses batch auctions (not instant fills)
+- **Profit Margins**: Typically $50-200 per successful trade
+- **Success Rate**: Not all orders will fill due to market conditions
+
+## 🚨 Troubleshooting
+
+### Common Issues
+
+| Problem | Cause | Solution |
+|---------|-------|----------|
+| No price updates | API connection failed | Check internet connection, restart bot |
+| Telegram not working | Wrong bot token/chat ID | Verify setup with @BotFather |
+| Orders not filling | Price too far from market | Bot will auto-cancel stale orders |
+| AI errors | OpenRouter API issues | Bot falls back to mathematical rules |
+| Network errors | RPC connection problems | Check BASE_RPC_URL configuration |
+
+### When Things Go Wrong
+- **OpenRouter API Fails**: Bot uses fallback mathematical decision rules
+- **CoW Protocol Delays**: Orders may take 5-30 minutes to settle
+- **Network Issues**: Bot will retry connections automatically
+- **Telegram Errors**: Notifications may be delayed but trading continues
 
 ## 🔧 Configuration
 
@@ -275,34 +329,58 @@ CHECK_INTERVAL: 5 * 60 * 1000, // 5 minute cycles
 - Timeout: 15 seconds per request
 - Automatic model rotation on failure
 
-## 🚨 Important Notes
+## 🚨 Important Requirements
 
-### Requirements
+### Technical Requirements
 - Base network wallet with WETH/USDC
-- OpenRouter account with API credits
+- OpenRouter account with API credits ($5+ recommended)
 - Node.js 18+ with ES modules support
+- Stable internet connection
 
-### Risks
+### Financial Requirements  
+- **Minimum Portfolio**: $1000+ ($500 USDC + $500 WETH)
+- **Gas Reserves**: Extra WETH for transaction fees
+- **Risk Capital**: Only use funds you can afford to lose completely
+
+## ⚠️ IMPORTANT DISCLAIMERS
+
+🚨 **READ BEFORE USING**:
+
+- **Experimental Software**: This bot can lose money due to bugs, AI errors, or market conditions
+- **No Guarantees**: No guarantee of profits or complete loss prevention
+- **Your Responsibility**: You are responsible for all trades executed by this bot
+- **Not Financial Advice**: This is educational software, not professional trading advice
+- **Start Small**: Begin with minimal amounts to test functionality
+- **Market Risks**: Cryptocurrency trading involves substantial risk of loss
+- **Technical Risks**: Smart contracts, APIs, and AI models can fail unexpectedly
+
+### Known Limitations
 - Uses limit orders (no guaranteed execution)
-- AI models can make mistakes (safety filters help)
-- CoW Protocol settlement delays
-- Market volatility can cause losses
-
-### Best Practices
-- Start with small amounts to test
-- Monitor Telegram notifications
-- Keep some ETH for gas fees
-- Regularly check bot logs for issues
+- AI models can make incorrect decisions despite safety filters
+- CoW Protocol settlement can take 5-30 minutes
+- Network congestion may delay or prevent trades
+- Bot may miss opportunities during downtime
 
 ## 📁 Generated Files
 
 - `ai-bot-state.json` - Bot state and cost basis
 - `ai-enhanced-cow-trading-bot.log` - Detailed execution logs  
 
-## 🤝 Support
+## 🤝 Support & Monitoring
 
-The bot includes comprehensive logging and error handling. Check the console output and Telegram notifications for troubleshooting information.
+### Daily Monitoring Recommended
+- Check console logs for errors
+- Verify Telegram notifications are working
+- Monitor actual vs expected portfolio balance
+- Review filled orders for accuracy
+
+### Getting Help
+The bot includes comprehensive logging and error handling. Check:
+1. Console output for real-time status
+2. Telegram notifications for alerts
+3. Log files for detailed execution history
+4. GitHub issues for known problems
 
 ---
 
-**⚠️ Disclaimer**: This bot is for educational purposes. Cryptocurrency trading involves risk. Never trade with funds you cannot afford to lose.
+**⚠️ FINAL WARNING**: This is experimental trading software. Cryptocurrency markets are highly volatile and unpredictable. You could lose all invested funds. Only use money you can afford to lose completely. The developers are not responsible for any financial losses.
