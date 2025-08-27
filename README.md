@@ -1,6 +1,6 @@
 <div align="center">
   
-  # AI-Enhanced CoW Trading Bot
+  # Conversational AI Trading Bot
   
   <div align="center">
     <img src="assets/baselogo.png" alt="Base" height="60"/>
@@ -12,13 +12,13 @@
   
   <br/>
   
-  **An intelligent cryptocurrency trading bot that uses AI to make trading decisions on CoW Protocol (Base network)**
+  **An intelligent cryptocurrency trading bot with conversational AI that trades on CoW Protocol (Base network)**
   
   [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
   [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
   [![Base Network](https://img.shields.io/badge/Network-Base-blue.svg)](https://base.org/)
   
-  *Automatically trades WETH/USDC pairs while protecting your capital with built-in safety mechanisms*
+  *Chat with your AI trading assistant via Telegram while it automatically trades WETH/USDC pairs*
   
 </div>
 
